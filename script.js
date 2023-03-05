@@ -12,25 +12,34 @@ function Book(title, authorName, pages, readed) {
     this.authorName = authorName;
     this.pages = pages;
     this.readed = readed;
-    function removeBook() {
-    }
-    
 }
 
 function addBookToLibrary() {
-    const newBook = new Book(formTitle.value, formAuthor.value, formPages.value, getChecked())
-    myLibrarry.push(newBook);
+    if (isCorrect(title.value) && isCorrect(author.value)) {
+        const newBook = new Book(title.value, author.value, pages.value, getChecked());
+        myLibrarry.push(newBook);
+   }
+    else {
+        console.log('incorrect input');
+    }
     console.log(myLibrarry);
 }
 
+function isCorrect(val) {
+    if (val.length < 3 || string.startsWith(' ')) {
+        return false; 
+    }
+    else {
+        return true;
+    }
+}
 function getChecked() {
-    if(formReaded.checked === true) {
+    if (formReaded.checked === true) {
         return true;
     }
     else {
         return false;
     }
 }
-
 
 formAdd.addEventListener('click', addBookToLibrary);
