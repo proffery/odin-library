@@ -22,3 +22,20 @@
     grid-column: 1 / 2;
     grid-row: 2 / 3;
 }
+
+.library {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.book-card-readed, .book-card-unreaded {
+    height: 10rem;
+}
+
+.book-card-readed {
+    background-color: aquamarine;
+}
+
+.book-card-unreaded {
+    background-color: lightpink;
+}
