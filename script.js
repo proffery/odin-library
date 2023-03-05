@@ -33,18 +33,18 @@ function addBookToLibrary(e) {
         }
         library.appendChild(bookCard);
         let title = document.createElement('div');
-        title.textContent = `${myLibrarry[myLibrarry.length - 1].title}`;
+        title.textContent = `Book: ${myLibrarry[myLibrarry.length - 1].title}`;
         bookCard.appendChild(title);
         let authorName = document.createElement('div');
-        authorName.textContent = `${myLibrarry[myLibrarry.length - 1].authorName}`;
+        authorName.textContent = `Author: ${myLibrarry[myLibrarry.length - 1].authorName}`;
         bookCard.appendChild(authorName);
         let pages = document.createElement('div');
-        pages.textContent = `${myLibrarry[myLibrarry.length - 1].pages}`;
+        pages.textContent = `Pages: ${myLibrarry[myLibrarry.length - 1].pages}`;
         bookCard.appendChild(pages);
         let remove = document.createElement('button');
         remove.classList.add('remove');
         remove.id = (`${myLibrarry.length - 1}`);
-        remove.textContent = '-';
+        remove.textContent = 'Remove';
         bookCard.appendChild(remove);
         remove.addEventListener('click', removeBook);
     }
@@ -57,8 +57,10 @@ function addBookToLibrary(e) {
 function removeBook(e) {
     const removeDiv = document.querySelector(`div[id="${e.target.id}"]`);
     library.removeChild(removeDiv);
-    // myLibrarry.splice(e.target.id, 1);
+    myLibrarry.splice(e.target.id, 1);
+    removeButtons = document.querySelectorAll('.remove');
     console.log(myLibrarry);
+    console.log(removeButtons);
 }
 
 formAdd.addEventListener('click', addBookToLibrary);
