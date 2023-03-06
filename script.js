@@ -15,6 +15,10 @@ function Book(title, authorName, pages, readed) {
     this.readed = readed;
 }
 
+// Book.prototype.changeStatus = function () {
+//     this.readed = !this.readed;
+// };
+
 function addBookToLibrary(e) {
     if (formTitle.value.length < 3 || formAuthor.value.length < 3 || formPages.value % 1 != 0 || formPages.value < 1) {
         console.log('INPUT ERROR');
@@ -33,6 +37,7 @@ function addBookToLibrary(e) {
 function renderLibrary () {
     const allBooks = document.querySelectorAll('.card')
     allBooks.forEach(book => book.remove());
+
     for (let i = 0; i < myLibrarry.length; i++) {
         let bookCard = document.createElement('div');
         bookCard.id = (`${[i]}`);
@@ -61,7 +66,7 @@ function renderLibrary () {
         statusDiv.appendChild(statusLabel);
 
         let status = document.createElement('input');
-        status.id = (`readed${i}`)
+        status.id = (`${i}`)
         status.setAttribute('type', "checkbox");
         if (myLibrarry[i].readed) {
             bookCard.classList.add('book-card-readed');
@@ -71,23 +76,27 @@ function renderLibrary () {
             bookCard.classList.add('book-card-unreaded');
         }
         statusDiv.appendChild(status);
+        status.addEventListener('change', changeStatus);
 
         let remove = document.createElement('button');
         remove.classList.add('remove');
         remove.id = (`${i}`);
         remove.textContent = 'Remove';
         bookCard.appendChild(remove);
-        
+
         remove.addEventListener('click', removeBook);
     }
+}
+
+function changeStatus(e) {
+    myLibrarry[e.target.id].readed = !myLibrarry[e.target.id].readed;
+    renderLibrary();
 }
 
 function removeBook(e) {
     myLibrarry.splice(e.target.id, 1);
     renderLibrary();
     removeButtons = document.querySelectorAll('.remove');
-    console.log(myLibrarry);
-    console.log(removeButtons);
 }
 
 formAdd.addEventListener('click', addBookToLibrary);
