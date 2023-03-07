@@ -2,7 +2,8 @@
     --main-font: clamp(16px, 1.6vw, 1.5rem);
     --title-font: clamp(20px, 2vw, 2rem);
     --back-color: aliceblue;
-    --shadow-two: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    --shadow-inner: 15px 15px 15px rgba(0,0,0,.2);;
+    --shadow-outer: 15px 15px 20px rgba(0,0,0,.35);
 }
 
 body {
@@ -48,14 +49,19 @@ body {
 
 form {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    margin: 1rem;
+    margin-bottom: 1rem;
 }
 
 form div {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    margin-right: 3rem;
+    margin-left: 0;
+    margin-bottom: 0;
 }
 
 form div label, form div input {
@@ -65,6 +71,11 @@ form div label, form div input {
 form div input:focus {
     border: 1px solid cornflowerblue;
     outline: none;
+}
+
+.add {
+    display: flex;
+    align-self: center;
 }
 
 .library {
@@ -79,9 +90,18 @@ form div input:focus {
     height: 10rem;
     width: 7rem;
     padding: .5rem;
-    box-shadow: var(--shadow-two);
+    box-shadow: var(--shadow-outer);
     justify-content: space-between;
+    transition: all .2s ease-out;
+    z-index: 2;
+    overflow:auto;
 }
+
+.card:hover {
+    transform: rotateY(-10deg);
+    box-shadow: var(--shadow-inner);
+}
+
 
 .card div {
     display: flex;
@@ -94,6 +114,7 @@ form div input:focus {
     flex-direction: column;
     align-items: center;
     justify-content: left;
+    padding: 1rem;
 }
 
 .book-card-readed {
