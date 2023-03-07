@@ -4,7 +4,8 @@ const formPages = document.getElementById('pages');
 const formReaded = document.getElementById('readed');
 const formAdd = document.getElementById('add');
 const library = document.querySelector('.library');
-let removeButtons = document.querySelectorAll('.remove');;
+let removeButtons = document.querySelectorAll('.remove');
+const info = document.querySelector('.info');
 
 let myLibrarry = [];
 
@@ -85,7 +86,62 @@ function renderLibrary () {
         bookCard.appendChild(remove);
 
         remove.addEventListener('click', removeBook);
+        renderInfo();
     }
+}
+
+function renderInfo() {
+    while (info.firstChild) {
+        info.removeChild(info.firstChild);
+    }
+    let infoContainer = document.createElement('div');
+    infoContainer.classList.add('info-container');
+    info.appendChild(infoContainer);
+
+
+    let booksTotal = document.createElement('p');
+    booksTotal.textContent = `Books: ${myLibrarry.length}`;
+    infoContainer.appendChild(booksTotal);
+
+    let booksReadedCount = 0;
+    let booksUnreadedCount = 0;
+    for (let i = 0; i < myLibrarry.length; i++) {
+        if (myLibrarry[i].readed) {
+            booksReadedCount++;
+        }
+        else {
+            booksUnreadedCount++;
+        }
+    }
+    let booksReaded = document.createElement('p');
+    booksReaded.textContent = `Books readed: ${booksReadedCount}`;
+    infoContainer.appendChild(booksReaded);
+    let booksUnreaded = document.createElement('p');
+    booksUnreaded.textContent = `Books unreaded: ${booksUnreadedCount}`;
+    infoContainer.appendChild(booksUnreaded);
+    
+    let pagesCount = 0;
+    let pagesReadedCount = 0;
+    let pagesUnreadedCount = 0;
+    for (let i = 0; i < myLibrarry.length; i++) {
+        if (myLibrarry[i].readed) {
+            pagesReadedCount += parseInt(myLibrarry[i].pages);
+        }
+        else {
+            pagesUnreadedCount += parseInt(myLibrarry[i].pages);
+        }
+        pagesCount += parseInt(myLibrarry[i].pages);
+    }
+
+    let pagesTotal = document.createElement('p');
+    pagesTotal.textContent = `Pages: ${pagesCount}`;
+    infoContainer.appendChild(pagesTotal);
+    let pagesReaded = document.createElement('p');
+    pagesReaded.textContent = `Pages readed: ${pagesReadedCount}`;
+    infoContainer.appendChild(pagesReaded);
+    let pagesUnreaded = document.createElement('p');
+    pagesUnreaded.textContent = `Pages unreaded: ${pagesUnreadedCount}`;
+    infoContainer.appendChild(pagesUnreaded);
 }
 
 function changeStatus(e) {
@@ -96,7 +152,8 @@ function changeStatus(e) {
 function removeBook(e) {
     myLibrarry.splice(e.target.id, 1);
     renderLibrary();
+    renderInfo();
     removeButtons = document.querySelectorAll('.remove');
 }
-
+renderInfo();
 formAdd.addEventListener('click', addBookToLibrary);
