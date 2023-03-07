@@ -1,21 +1,31 @@
+@font-face {
+    font-family: main-font;
+    src: url(./font/CutiveMono-Regular.ttf);
+}
+
 :root {
     --main-font: clamp(16px, 1.6vw, 1.5rem);
-    --title-font: clamp(20px, 2vw, 2rem);
-    --back-color: aliceblue;
-    --shadow-inner: 15px 15px 15px rgba(0,0,0,.2);;
-    --shadow-outer: 15px 15px 20px rgba(0,0,0,.35);
+    --title-font: clamp(20px, 3vw, 5rem);
+    --back-color: rgb(233, 182, 41);
+    --readed-color: rgb(226, 250, 242);
+    --unreaded-color: rgb(252, 236, 238);
+    --shadow-inner: 2px 2px 2px rgba(0,0,0,.2);;
+    --shadow-outer: 5px 5px 10px rgba(0,0,0,.35);
 }
 
 body {
     margin: 0;
+    font-family: main-font;
     font-size: var(--main-font);
     background-color: var(--back-color);
+    background-image: url("./img/Texture\ 77\ by\ S3PTIC-STOCK.jpg");
+    background-size: cover;
 }
 
 .main-container {
     display: grid;
     grid-template-columns: 4fr 1fr;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: .1fr 4fr;
     padding: 1rem;
 }
 
@@ -28,6 +38,7 @@ body {
     justify-content: center;
     padding: 1rem;
     font-size: calc(var(--title-font) + .5rem);
+    font-weight: 600;
 }
 
 .sidebar {
@@ -64,24 +75,47 @@ form div {
     margin-bottom: 0;
 }
 
-form div label, form div input {
-    margin: .2rem;
+
+form label {
+    font-weight: 600;
+}
+
+form div input {
+    font-family: main-font;
+    border: 1px solid rgb(78, 78, 78);
+    border-radius: .2rem;
+    outline: none;
 }
 
 form div input:focus {
-    border: 1px solid cornflowerblue;
+    border: 1px solid rgb(173, 158, 109);
+    border-radius: .2rem;
     outline: none;
 }
 
 .add {
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+ 
+.add button {
+    background-image: url("./img/plus.svg");
+    height: 1.5rem;
+    width: 1.5rem;
+    display: flex;
+    border-radius: 1.5rem;
+    border: none;
+    box-shadow: var(--shadow-inner);
     align-self: center;
+    padding: .1rem;
+    font-weight: 600;
 }
 
 .library {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2.5rem;
 }
 
 .card {
@@ -89,13 +123,15 @@ form div input:focus {
     flex-direction: column;
     height: 10rem;
     width: 7rem;
-    padding: .5rem;
+    padding: 1rem;
+    border: 1px solid;
+    border-radius: .3rem;
     box-shadow: var(--shadow-outer);
     justify-content: space-between;
     transition: all .2s ease-out;
-    z-index: 2;
-    overflow:auto;
+    overflow: auto;
 }
+
 
 .card:hover {
     transform: rotateY(-10deg);
@@ -109,6 +145,17 @@ form div input:focus {
     text-align: left;
 }
 
+.remove {
+    background-image: url("./img/trash-can-outline.svg");
+    background-repeat: no-repeat;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 1.5rem;
+    border: none;
+    box-shadow: var(--shadow-inner);
+    align-self: center;
+}
+
 .info {
     display: flex;
     flex-direction: column;
@@ -117,10 +164,38 @@ form div input:focus {
     padding: 1rem;
 }
 
+.info-container::first-line {
+    font-weight: 600;
+}
+
 .book-card-readed {
-    background-color: rgb(189, 248, 229);
+    background-image: url("./img/004.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter:saturate(2);
 }
 
 .book-card-unreaded {
-    background-color: rgb(252, 211, 217);
+    background-image: url("./img/009.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: sepia(.1);
+}
+
+.footer {
+    display: flex;
+    margin: 20px;
+    margin-bottom: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(var(--main-font) - 3px);
+}
+
+.github-mark {
+    width: var(--main-font);
+    transition: all .3s;
+}
+
+.github-mark:hover {
+    transform: rotate(360deg);
 }

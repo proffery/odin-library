@@ -46,11 +46,11 @@ function renderLibrary () {
         library.appendChild(bookCard);
 
         let title = document.createElement('div');
-        title.textContent = `Book: ${myLibrarry[i].title}`;
+        title.textContent = `${myLibrarry[i].title}`;
         bookCard.appendChild(title);
 
         let authorName = document.createElement('div');
-        authorName.textContent = `Author: ${myLibrarry[i].authorName}`;
+        authorName.textContent = `${myLibrarry[i].authorName}`;
         bookCard.appendChild(authorName);
 
         let pages = document.createElement('div');
@@ -82,7 +82,6 @@ function renderLibrary () {
         let remove = document.createElement('button');
         remove.classList.add('remove');
         remove.id = (`${i}`);
-        remove.textContent = 'Remove';
         bookCard.appendChild(remove);
 
         remove.addEventListener('click', removeBook);
