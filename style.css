@@ -116,7 +116,7 @@ input[type="checkbox"] {
 
 .library {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
     gap: 2.5rem;
 }
 
