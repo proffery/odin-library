@@ -7,7 +7,27 @@ const library = document.querySelector('.library');
 let removeButtons = document.querySelectorAll('.remove');
 const info = document.querySelector('.info');
 
-let myLibrarry = [];
+let myLibrarry = [
+    {
+        title: 'Solaris',
+        authorName: 'Stanislaw Lem',
+        pages: 204,
+        readed: true,
+    },
+    {
+        title: '2001: A Space Odyssey',
+        authorName: 'Arthur C. Clarke',
+        pages: 221,
+        readed: true,
+    },
+
+    {
+        title: 'Ender\'s Game',
+        authorName: 'Orson Scott Card',
+        pages: 324,
+        readed: true,
+    },
+];
 
 function Book(title, authorName, pages, readed) {
     this.title = title;
@@ -21,18 +41,43 @@ function Book(title, authorName, pages, readed) {
 // };
 
 function addBookToLibrary(e) {
-    if (formTitle.value.length < 3 || formAuthor.value.length < 3 || formPages.value % 1 != 0 || formPages.value < 1) {
-        console.log('INPUT ERROR');
+    e.preventDefault();
+    if (formTitle.value.length < 3) {
+        const msg = 'Title must be longer than 2';
+        checkInput(formTitle, msg);
+    }
+    else if (formAuthor.value.length < 3) {
+        
+        checkInput(formAuthor, 'Authot name must be longer than 2');
+    }
+    else if (formPages.value % 1 != 0 || formPages.value < 1 || formPages.value > 3000) {
+        
+        checkInput(formPages, '1-3000');
     }
     else {
         const newBook = new Book(formTitle.value, formAuthor.value, formPages.value, formReaded.checked);
         myLibrarry.push(newBook);
         renderLibrary();
     }
-    console.log(myLibrarry);
+
     removeButtons = document.querySelectorAll('.remove');
-    console.log(removeButtons);
-    e.preventDefault();
+}
+
+function checkInput(input, msg) {
+    const warningBox = document.createElement("div");
+    warningBox.className = "warning";
+    warningBox.innerHTML = msg;
+    
+    if (document.body.contains(warningBox)) {
+        clearTimeout(warningTimeout);
+    }
+    else {
+        input.parentNode.insertBefore(warningBox, input.nextSibling);
+    }
+    warningTimeout = setTimeout(() => {
+        warningBox.parentNode.removeChild(warningBox);
+        warningTimeout = -1;
+    }, 2000);
 }
 
 function renderLibrary () {
@@ -154,5 +199,6 @@ function removeBook(e) {
     renderInfo();
     removeButtons = document.querySelectorAll('.remove');
 }
+renderLibrary();
 renderInfo();
 formAdd.addEventListener('click', addBookToLibrary);

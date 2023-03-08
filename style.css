@@ -6,7 +6,7 @@
 :root {
     --main-font: clamp(16px, 1.6vw, 1.5rem);
     --title-font: clamp(20px, 3vw, 5rem);
-    --back-color: rgb(233, 182, 41);
+    --back-color: rgb(245, 234, 208);
     --shadow-inner: 2px 2px 2px rgba(0,0,0,.2);;
     --shadow-outer: 5px 5px 10px rgba(0,0,0,.35);
 }
@@ -125,8 +125,10 @@ input[type="checkbox"] {
     flex-direction: column;
     height: 10rem;
     width: 7rem;
-    padding: 1rem;
-    border: 1px dotted;
+    padding: .8rem;
+    /* border: 3px dotted; */
+    border-left: 3px dotted;;
+    border-top: 0;
     border-radius: .3rem;
     box-shadow: var(--shadow-outer);
     justify-content: space-between;
@@ -171,17 +173,16 @@ input[type="checkbox"] {
 }
 
 .book-card-readed {
-    background-image: url("./img/004.png");
+    background-image: url("./img/009.png");
     background-repeat: no-repeat;
     background-size: cover;
-    filter:saturate(2);
+    filter: sepia(.3);
 }
 
 .book-card-unreaded {
     background-image: url("./img/009.png");
     background-repeat: no-repeat;
     background-size: cover;
-    filter: sepia(.1);
 }
 
 .footer {
@@ -204,4 +205,15 @@ input[type="checkbox"] {
 
 a {
     color: black;
+}
+
+.warning {
+    display: flex;
+    position: absolute;
+    border: 1px solid #f39389;
+    border-radius: 2px;
+    padding: .3rem;
+    background-color: #fbd8d4;
+    color: #3b3c40;
+    font-size: calc(var(--main-font) - 3px);
 }
