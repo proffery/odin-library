@@ -125,7 +125,7 @@ input[type="checkbox"] {
     flex-direction: column;
     height: 16rem;
     width: 11rem;
-    padding: .8rem;
+    padding: 1.5rem;
     /* border: 3px dotted; */
     border-left: 3px dotted;;
     border-top: 0;
