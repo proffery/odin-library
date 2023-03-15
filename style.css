@@ -123,7 +123,7 @@ input[type="checkbox"] {
 .card {
     display: flex;
     flex-direction: column;
-    height: 12rem;
+    height: 13rem;
     width: 8rem;
     padding: 1.5rem;
     /* border: 3px dotted; */
