@@ -116,15 +116,15 @@ input[type="checkbox"] {
 
 .library {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
     gap: 2.5rem;
 }
 
 .card {
     display: flex;
     flex-direction: column;
-    height: 16rem;
-    width: 11rem;
+    height: 12rem;
+    width: 8rem;
     padding: 1.5rem;
     /* border: 3px dotted; */
     border-left: 3px dotted;;
