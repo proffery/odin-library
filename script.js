@@ -29,16 +29,15 @@ let myLibrarry = [
     },
 ];
 
-function Book(title, authorName, pages, readed) {
-    this.title = title;
-    this.authorName = authorName;
-    this.pages = pages;
-    this.readed = readed;
+class Book {
+    constructor(title, authorName, pages, readed) {
+        this.title = title;
+        this.authorName = authorName;
+        this.pages = pages;
+        this.readed = readed;
+    }
 }
 
-// Book.prototype.changeStatus = function () {
-//     this.readed = !this.readed;
-// };
 
 function addBookToLibrary(e) {
     e.preventDefault();
